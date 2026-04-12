@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --retro-cream: #f7f5ef;
+  --retro-yellow: #d8d2c2;
+  --retro-orange: #b8b1a3;
+  --retro-coral: #8b8578;
+  --retro-teal: #3b3a36;
+  --retro-deep: #1b1a18;
+  --retro-ink: #11110f;
+  --section-width: 1120px;
+  --paper-shadow: 0 14px 0 rgba(32, 32, 32, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Space Mono', monospace;
+  color: var(--retro-ink);
+  background-color: var(--retro-cream);
+  background-image:
+    radial-gradient(circle at 12% 16%, rgba(17, 17, 15, 0.07) 0 12%, transparent 40%),
+    radial-gradient(circle at 88% 12%, rgba(17, 17, 15, 0.06) 0 10%, transparent 36%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(17, 17, 15, 0.03) 0 1px,
+      transparent 1px 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(17, 17, 15, 0.02) 0 1px,
+      transparent 1px 4px
+    ),
+    repeating-radial-gradient(
+      circle at 20% 30%,
+      rgba(17, 17, 15, 0.035) 0 1px,
+      transparent 1px 3px
+    );
+  animation: drift 26s ease-in-out infinite alternate;
+  padding-top: 92px;
+  line-height: 1.6;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(17, 17, 15, 0.08) 0 1px,
+      transparent 1px 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(17, 17, 15, 0.07) 0 1px,
+      transparent 1px 3px
+    ),
+    radial-gradient(circle at 30% 20%, rgba(17, 17, 15, 0.12) 0 20%, transparent 55%),
+    radial-gradient(circle at 70% 75%, rgba(17, 17, 15, 0.1) 0 18%, transparent 50%);
+  mix-blend-mode: multiply;
+  opacity: 0.35;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: -10%;
+  pointer-events: none;
+  background-image:
+    repeating-radial-gradient(
+      circle at 10% 20%,
+      rgba(17, 17, 15, 0.12) 0 1px,
+      transparent 1px 3px
+    ),
+    repeating-radial-gradient(
+      circle at 80% 60%,
+      rgba(17, 17, 15, 0.1) 0 1px,
+      transparent 1px 4px
+    );
+  mix-blend-mode: multiply;
+  opacity: 0.28;
+  z-index: 0;
+  animation: grainShift 6s steps(6) infinite;
+}
+
+section {
+  max-width: var(--section-width);
+  margin: 0 auto 2rem;
+  border: 3px solid var(--retro-ink);
+  background:
+    linear-gradient(180deg, rgba(247, 245, 239, 0.97), rgba(232, 228, 219, 0.92)),
+    repeating-linear-gradient(
+      -16deg,
+      rgba(17, 17, 15, 0.08) 0 10px,
+      transparent 10px 22px
+    );
+  box-shadow: 0 10px 0 rgba(17, 17, 15, 0.22);
+  animation: sectionFade 0.7s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(17, 17, 15, 0.12) 0 12%, transparent 40%),
+    radial-gradient(circle at 85% 70%, rgba(17, 17, 15, 0.12) 0 14%, transparent 42%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(17, 17, 15, 0.06) 0 2px,
+      transparent 2px 6px
+    );
+  mix-blend-mode: multiply;
+  opacity: 0.75;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed rgba(17, 17, 15, 0.35);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Newsreader', serif;
+  letter-spacing: 0.03em;
+  margin-top: 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  margin-bottom: 1.3rem;
+}
+
+p {
+  font-size: clamp(0.95rem, 1.9vw, 1.05rem);
+}
+
+a {
+  color: inherit;
+}
+
+@keyframes drift {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 6% -4%, -4% 8%, 12% -6%;
+  }
+}
+
+@keyframes grainShift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-2%, 1%);
+  }
+}
+
+@keyframes sectionFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  body {
+    padding-top: 84px;
+  }
+
+  section {
+    margin: 0 1rem 1.3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,54 @@
+.home {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.home-intro p,
+.home-cta p {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.home-highlights .highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.highlight-card {
+  border: 2px solid var(--retro-ink);
+  padding: 1.2rem;
+  background: rgba(255, 247, 214, 0.92);
+  box-shadow: 6px 6px 0 rgba(32, 32, 32, 0.25);
+}
+
+.highlight-card h3 {
+  margin-bottom: 0.6rem;
+  color: var(--retro-deep);
+}
+
+.home-process .process-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 720px;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.home-process .process-list li {
+  border: 2px solid rgba(32, 32, 32, 0.9);
+  padding: 0.8rem 1rem;
+  background: rgba(248, 212, 92, 0.2);
+  box-shadow: 4px 4px 0 rgba(32, 32, 32, 0.2);
+}
+
+.home-cta {
+  text-align: center;
+}
+
+.home-cta .btn {
+  display: inline-block;
+  margin-top: 1rem;
+}

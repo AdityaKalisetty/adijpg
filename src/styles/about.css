@@ -1,0 +1,37 @@
+.about {
+  padding: 3.7rem 2rem;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(247, 245, 239, 0.96), rgba(217, 211, 199, 0.4)),
+    repeating-linear-gradient(
+      to right,
+      rgba(17, 17, 15, 0.04) 0 2px,
+      transparent 2px 15px
+    );
+}
+
+.about h2 {
+  color: var(--retro-deep);
+  margin-bottom: 2rem;
+}
+
+.about p {
+  line-height: 1.75;
+  color: var(--retro-ink);
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  background: rgba(247, 245, 239, 0.95);
+  border: 2px solid rgba(32, 32, 32, 0.9);
+  padding: 1rem 1.1rem;
+  box-shadow: 5px 5px 0 rgba(32, 32, 32, 0.2);
+}
+
+@media (max-width: 600px) {
+  .about {
+    padding: 3rem 1.2rem;
+  }
+
+  .about p {
+    padding: 0.9rem 0.9rem;
+  }
+}
