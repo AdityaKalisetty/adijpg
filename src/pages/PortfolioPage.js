@@ -54,6 +54,7 @@ export default function PortfolioPage() {
               type="button"
               className={`photo-card ${getSizeClass(index)}`}
               onClick={() => setActivePhoto({ src, alt: altText })}
+              onTouchStart={() => setActivePhoto({ src, alt: altText })}
               aria-label={`Expand ${altText}`}
             >
               <img src={src} alt={altText} loading="lazy" />

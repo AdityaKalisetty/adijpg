@@ -119,7 +119,7 @@
   }
 
   .portfolio-grid {
-    column-count: 2;
+    column-count: 3;
   }
 
   .photo-card.size-tall,
@@ -147,6 +147,6 @@
 
 @media (max-width: 520px) {
   .portfolio-grid {
-    column-count: 1;
+    column-count: 5;
   }
 }
