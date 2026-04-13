@@ -77,7 +77,7 @@ export default function PortfolioPage() {
             onClick={() => setActivePhoto(null)}
             aria-label="Close photo"
           >
-            Close
+            ×
           </button>
         </div>
       )}
