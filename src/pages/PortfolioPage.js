@@ -6,11 +6,33 @@ const importAll = (r) => r.keys().map((key) => ({
   src: r(key),
 }));
 
-const images = importAll(
-  require.context('../assets/images', false, /\.(png|jpe?g|webp)$/)
-);
+const categoryImages = {
+  people: importAll(
+    require.context('../assets/images/people', false, /\.(png|jpe?g|webp)$/)
+  ),
+  nature: importAll(
+    require.context('../assets/images/nature', false, /\.(png|jpe?g|webp)$/)
+  ),
+  abstract: importAll(
+    require.context('../assets/images/abstract', false, /\.(png|jpe?g|webp)$/)
+  ),
+};
 
-const portfolioImages = images.filter(({ key }) => !key.toLowerCase().includes('hero'));
+const filterOptions = [
+  { id: 'everything', label: 'Everything' },
+  { id: 'people', label: 'People' },
+  { id: 'nature', label: 'Nature' },
+  { id: 'abstract', label: 'Abstract' },
+];
+
+const portfolioImages = Object.entries(categoryImages)
+  .flatMap(([category, images]) =>
+    images.map((image) => ({
+      ...image,
+      category,
+    }))
+  )
+  .filter(({ key }) => !key.toLowerCase().includes('hero'));
 
 const getSizeClass = (index) => {
   if (index % 10 === 0) return 'size-big';
@@ -27,6 +49,7 @@ const toAlt = (key) =>
 
 export default function PortfolioPage() {
   const [activePhoto, setActivePhoto] = useState(null);
+  const [activeFilter, setActiveFilter] = useState('everything');
 
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -39,14 +62,30 @@ export default function PortfolioPage() {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
 
+  const filteredImages = portfolioImages.filter(
+    (image) => activeFilter === 'everything' || image.category === activeFilter
+  );
+
   return (
     <section className="portfolio">
       <h2>Portfolio</h2>
       <p className="portfolio-intro">
-        Events, people, nature, and more!
+        Browse the full collection or filter by people, nature, and abstract work.
       </p>
+      <div className="portfolio-filters" aria-label="Portfolio filters">
+        {filterOptions.map((option) => (
+          <button
+            key={option.id}
+            type="button"
+            className={`portfolio-filter ${activeFilter === option.id ? 'active' : ''}`}
+            onClick={() => setActiveFilter(option.id)}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
       <div className="portfolio-grid">
-        {portfolioImages.map(({ key, src }, index) => {
+        {filteredImages.map(({ key, src }, index) => {
           const altText = toAlt(key);
           return (
             <button
