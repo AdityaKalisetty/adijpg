@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/adijpg/static/css/main.e727216d.css",
-    "main.js": "/adijpg/static/js/main.5b7556f9.js",
+    "main.css": "/adijpg/static/css/main.dbff7fc2.css",
+    "main.js": "/adijpg/static/js/main.72c9ca30.js",
     "static/js/453.2ebd9f1a.chunk.js": "/adijpg/static/js/453.2ebd9f1a.chunk.js",
     "static/media/DSC04879.jpg": "/adijpg/static/media/DSC04879.edd89edd0e08d7826ac7.jpg",
     "static/media/PXL_20240310_164929000~2.jpg": "/adijpg/static/media/PXL_20240310_164929000~2.d02830041d144385a925.jpg",
@@ -72,12 +72,12 @@
     "static/media/11-DSC07637.jpg": "/adijpg/static/media/11-DSC07637.398ee88c3c3abbdd1b63.jpg",
     "static/media/12-DSC07599.jpg": "/adijpg/static/media/12-DSC07599.e8a4db20dfb4d729995e.jpg",
     "index.html": "/adijpg/index.html",
-    "main.e727216d.css.map": "/adijpg/static/css/main.e727216d.css.map",
-    "main.5b7556f9.js.map": "/adijpg/static/js/main.5b7556f9.js.map",
+    "main.dbff7fc2.css.map": "/adijpg/static/css/main.dbff7fc2.css.map",
+    "main.72c9ca30.js.map": "/adijpg/static/js/main.72c9ca30.js.map",
     "453.2ebd9f1a.chunk.js.map": "/adijpg/static/js/453.2ebd9f1a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e727216d.css",
-    "static/js/main.5b7556f9.js"
+    "static/css/main.dbff7fc2.css",
+    "static/js/main.72c9ca30.js"
   ]
 }
