@@ -50,6 +50,7 @@ const toAlt = (key) =>
 export default function PortfolioPage() {
   const [activePhoto, setActivePhoto] = useState(null);
   const [activeFilter, setActiveFilter] = useState('everything');
+  const [visibleCount, setVisibleCount] = useState(18);
 
   useEffect(() => {
     const onKeyDown = (event) => {
@@ -62,9 +63,15 @@ export default function PortfolioPage() {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, []);
 
+  useEffect(() => {
+    setVisibleCount(18);
+  }, [activeFilter]);
+
   const filteredImages = portfolioImages.filter(
     (image) => activeFilter === 'everything' || image.category === activeFilter
   );
+
+  const visibleImages = filteredImages.slice(0, visibleCount);
 
   return (
     <section className="portfolio">
@@ -85,7 +92,7 @@ export default function PortfolioPage() {
         ))}
       </div>
       <div className="portfolio-grid">
-        {filteredImages.map(({ key, src }, index) => {
+        {visibleImages.map(({ key, src }, index) => {
           const altText = toAlt(key);
           return (
             <button
@@ -95,20 +102,40 @@ export default function PortfolioPage() {
               onClick={() => setActivePhoto({ src, alt: altText })}
               aria-label={`Expand ${altText}`}
             >
-              <img src={src} alt={altText} loading="lazy" />
+              <img
+                src={src}
+                alt={altText}
+                loading="lazy"
+                decoding="async"
+                fetchPriority="low"
+              />
             </button>
           );
         })}
       </div>
+      {visibleCount < filteredImages.length && (
+        <button
+          type="button"
+          className="portfolio-load-more"
+          onClick={() => setVisibleCount((count) => count + 18)}
+        >
+          Load More
+        </button>
+      )}
       {activePhoto && (
-        <div className="portfolio-modal" role="dialog" aria-modal="true" onClick={() => setActivePhoto(null)}>
+        <div
+          className="portfolio-modal"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setActivePhoto(null)}
+        >
           <button
             type="button"
             className="portfolio-modal-content"
             onClick={(event) => event.stopPropagation()}
             aria-label="Expanded photo"
           >
-            <img src={activePhoto.src} alt={activePhoto.alt} />
+            <img src={activePhoto.src} alt={activePhoto.alt} decoding="async" />
           </button>
           <button
             type="button"
@@ -116,7 +143,7 @@ export default function PortfolioPage() {
             onClick={() => setActivePhoto(null)}
             aria-label="Close photo"
           >
-            ×
+            x
           </button>
         </div>
       )}
