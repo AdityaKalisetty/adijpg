@@ -8,13 +8,13 @@ const importAll = (r) => r.keys().map((key) => ({
 
 const categoryImages = {
   people: importAll(
-    require.context('../assets/images/people', false, /\.(png|jpe?g|webp)$/)
+    require.context('../assets/portfolio-web/people', false, /\.(png|jpe?g|webp)$/)
   ),
   nature: importAll(
-    require.context('../assets/images/nature', false, /\.(png|jpe?g|webp)$/)
+    require.context('../assets/portfolio-web/nature', false, /\.(png|jpe?g|webp)$/)
   ),
   abstract: importAll(
-    require.context('../assets/images/abstract', false, /\.(png|jpe?g|webp)$/)
+    require.context('../assets/portfolio-web/abstract', false, /\.(png|jpe?g|webp)$/)
   ),
 };
 

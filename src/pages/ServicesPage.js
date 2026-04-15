@@ -5,15 +5,15 @@ import '../styles/services.css';
 const importAll = (r) => r.keys().map((key) => r(key));
 
 const soloImages = importAll(
-  require.context('../assets/images/solo', false, /\.(png|jpe?g|webp)$/)
+  require.context('../assets/portfolio-web/solo', false, /\.(png|jpe?g|webp)$/)
 );
 
 const groupImages = importAll(
-  require.context('../assets/images/group', false, /\.(png|jpe?g|webp)$/)
+  require.context('../assets/portfolio-web/group', false, /\.(png|jpe?g|webp)$/)
 );
 
 const eventImages = importAll(
-  require.context('../assets/images/events', false, /\.(png|jpe?g|webp)$/)
+  require.context('../assets/portfolio-web/events', false, /\.(png|jpe?g|webp)$/)
 );
 
 export default function ServicesPage() {
@@ -118,6 +118,8 @@ export default function ServicesPage() {
                     src={activeImage}
                     alt={`${service.label} featured`}
                     loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
                   />
                 ) : (
                   <div className="service-media-fallback">Featured photos coming soon</div>
@@ -159,6 +161,7 @@ export default function ServicesPage() {
               <img
                 src={activeCarousel.images[activeIndex]}
                 alt={`${activeCarousel.label} carousel`}
+                decoding="async"
               />
             </div>
             <button
